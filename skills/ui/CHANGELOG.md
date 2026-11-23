@@ -1,5 +1,24 @@
 # 21 Grams UI changelog
 
+## 4.7.0 — 2026-11-23
+
+Learned from building a membership and check-in app (member phone app plus a staff dashboard). The flow side of these is in UX 1.3.0 (F51–F64); this release adds the visual specs.
+
+- **Mobile text sizes** (`rules/type.md`): on a phone, meta and secondary lines are 14, item titles and buttons 16. 12 is only for tags, nav group labels and axis ticks.
+- **Font check:** the font's CSS variable goes on `<html>`, or the page can silently fall back to the system font.
+- **Spacing** (`rules/spacing.md`): sections 32 apart on a phone; a big number 8 above its caption; a list's heading 24 above the list.
+- **Stat cards** (`rules/charts.md`): quiet 14px regular title, the number loudest, a live state (how busy) top right. Stats for concepts the business doesn't have are removed.
+- **Usage meters:** "8/12 sessions", one segment per unit for small totals, coloured green → amber → red by what's left.
+- **Hero number follows the hover:** only the changed digits roll, the label takes the column's context, other columns dim.
+- **Schedules are a week calendar:** times down, days across, block height = duration, now-line, past faded, full blocks with an amber edge; a date strip on phones.
+- **Full-screen verdicts** (`rules/motion.md`): a fully green phone screen that closes itself after 5s with a draining Done button; a grainy glow rising from the bottom on staff screens (~3s, never blocks clicks); Simulate controls in prototypes.
+- **Pass card:** tilt on hold, 3D flip to the brand logo on tap, centred in a bright sheet for scanning.
+- **Rolling digits:** only changed digits animate, blur up and out, new from below.
+- **Where things live** (`rules/layout.md`): creating is a top-right button opening a dialog; actions sit on the row they change; notifications are their own page with action items first; settings and sign-out reached from the profile.
+- **Dark mode** (`rules/buttons.md`, `rules/elevation.md`): secondary buttons visibly lighter than their card; dark cards a small step above the page.
+- **Fields respond on the next frame** (`rules/forms.md`): live data never redraws an unchanged form, lists filter after the keystroke, clocks tick coarsely.
+- New AI tells in `SKILL.md`.
+
 ## 4.6.0 — 2026-11-18
 
 Learned from a long desktop and mobile review session on an analytics product.

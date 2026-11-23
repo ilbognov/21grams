@@ -31,6 +31,19 @@ Show a change as a **signed number with its period**: "+1.1% in 12 months", "−
 - The from and to values can live in the tooltip or a second muted line.
 - Delta text uses the status ink that passes 4.5:1, with `tabular-nums`.
 
+## Stat cards
+- **The title is quiet:** 14px, regular weight, secondary ink ("Check-ins per hour"), not a bold heading. The number underneath is the loudest thing on the card (22–28, 600, `tabular-nums`), with its caption 8px below (`spacing.md`).
+- **A live state goes in the top-right corner** of the card it describes: a small meter with a word ("Quiet", "Busy", "Packed") for how busy the place is now, beside the current count. It uses the status colours with the word, never colour alone.
+- **Every stat is a real concept for this business** (behaviour: UX F59). A card that is always zero because the thing doesn't exist (debts where members have either paid or not) is removed, not restyled.
+
+## Usage meters: used of total
+For anything with a limit (sessions on a pass, seats, credits). Behaviour: UX F51.
+
+- **Text is used of total:** "8/12 sessions", tabular figures, not "12 sessions" or "4 left".
+- **Small totals (up to about 20) get one segment per unit**, so people can count them: 4px tall, radius 2, 2px gaps, full width of the card. Bigger totals use one continuous bar.
+- **The filled segments are coloured by what's left:** green while there is plenty (up to about 60% used), amber when it's getting low, red when it's used up or over the limit. The colour change always comes with the text, never alone.
+- Unlimited plans show the plan's name and no bar. The same count and colours appear everywhere the limit is shown (the card, the profile, the staff view).
+
 ## One scale per chart
 - **Never plot two measures on one axis or on a hidden second axis.** Orders and revenue become **two charts that share the x-axis** (small multiples), each with its own scale, aligned so the months line up.
 
@@ -44,6 +57,7 @@ Show a change as a **signed number with its period**: "+1.1% in 12 months", "−
   - totals only when they add information; no verdicts or targets the product doesn't make;
   - it opens below the mark and flips above near the bottom of the viewport, never runs off an edge, grows from the mark (220ms in / 175ms out, opacity only with reduced motion) and closes on leave, scroll or click;
   - touch screens skip the panel; tapping does what clicking did.
+- **When a column chart has a hero number above it** ("6 people in now" over check-ins per hour), hovering a column swaps that number for the column's value, and the label beside it changes to the column's context ("14 check-ins · 18:00–19:00"). Only the digits that change roll (`motion.md`, rolling digits). The hovered column stays full colour and the rest dim. On leave, the number goes back to its live value and only the current column ("Now") is highlighted.
 - Linked charts share hover: hovering a month in one highlights it in the other, with a single tooltip.
 - Charts are focusable. Arrow keys move the crosshair and Esc clears it.
 - Every chart offers a **Chart / Table** toggle (segmented control, see toggles.md) with the same numbers.
@@ -52,3 +66,12 @@ Show a change as a **signed number with its period**: "+1.1% in 12 months", "−
 - Lines draw in over 600ms ease-out, each series 50ms after the last.
 - Columns grow from the baseline and horizontal bars from the left, 400ms ease-out, 30ms apart.
 - Run the draw-in on load and when switching back from Table. Never animate on every hover. Reduced motion means no draw-in.
+
+## Schedules are a week calendar
+Classes, bookings and shifts show as a week, not a list (behaviour: UX F61).
+
+- **Times run down the left, one column per day** for the next 7 days. Day headers stay pinned while the grid scrolls; open the grid scrolled to the start of the working day, with the rest of the day reachable by scrolling.
+- **Today is marked** on its date (a filled circle or the accent), and a **thin red line shows the current time** across today's column.
+- **Each block's height is its duration.** Blocks that overlap sit side by side. A block shows the start time and how full it is ("12/12") on the first line, the name on the second, then the instructor and room (or "+2 waiting" when there is a waiting list) in secondary ink.
+- **State is shown on the block, quietly:** past blocks faded to about 50%, the one in progress with a small green dot, full ones with a 3px amber edge on the left.
+- Clicking a block opens its detail in a side panel, keeping the calendar in place. On a phone, the week becomes a horizontal date strip (edges fade, today scrolled into view) above that day's blocks.

@@ -13,6 +13,7 @@ House default. When the project has its own system, express this through its com
 - Resting surfaces separate by **fill only**: no border, no shadow.
 - **Only floating layers cast shadows.** A shadow means "this sits above the page".
 - Dark mode: each higher layer is lighter (hack #8). Shadows barely show on dark, so the lightness step does the work.
+- **Keep the dark step small.** On a near-black page, cards sit a few percent lighter (about `#1F1F1F` on `#121212`), not a jump to `#2A2A2A` that makes every card shout. Dividers inside dark cards are fainter still.
 - No cards inside cards. If content needs a sub-group inside a card, use a divider or a fill step, not another bordered box.
 
 ```css

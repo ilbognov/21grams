@@ -42,7 +42,7 @@ skills/<scale>/CHANGELOG.md       the scale's history
 docs/index.html                   the website (one self-contained page)
 ```
 
-Each scale keeps its own changelog. Release tags are named `<scale>@<version>`, e.g. `ui@4.6.0`.
+Each scale keeps its own changelog. Release tags are named `<scale>@<version>`, e.g. `ui@4.7.0`.
 
 ## License
 

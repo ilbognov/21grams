@@ -56,6 +56,15 @@ if (bad.length) { navigator.vibrate?.(30); bad[0].el.focus(); }
 - **Counts in headings are quiet:** "Added context · 1" in sentence case, not "ADDED CONTEXT (1)".
 - Row actions on someone's own entries (delete, edit) stay faint until the row is hovered or focused, and are always visible on touch.
 
+## Fields respond on the next frame
+Typing never waits on background work (behaviour: UX F63). When fields feel slow or jumpy, look at what re-renders before touching styles:
+
+- **Live data must not redraw the form.** Polling sends the version it already has and the server answers "not modified"; when nothing changed, don't set state at all.
+- **Input state stays local to the field**, not in a store that every update replaces.
+- **Long lists filter after the keystroke** (`useDeferredValue`, or a short debounce), so the field renders first and the rows follow.
+- **Clocks tick coarsely.** "10 days left" or "in progress" doesn't need a root-level timer every second; 15–60s is enough.
+- Check it by typing fast while live data is on. Each keystroke should land within a frame (≈16ms).
+
 ## Semantics
 - `aria-invalid="true"` on the field and `aria-describedby` pointing at its message, so screen readers announce it when focus lands there.
 - Messages live in a polite live region; the summary (if any) gets focus on submit.

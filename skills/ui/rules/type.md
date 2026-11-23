@@ -29,6 +29,8 @@ Audit: search for `font-mono`, `monospace`, `--font-mono`, `ui-monospace`, `Mono
 
 At most **four sizes per screen**. Weights are only 400, 500 and 600. Large display headings (28px and up) may scale fluidly with `clamp()` (see `references/typography.md` #5); UI text stays on this fixed scale.
 
+**Check that the font actually loads.** With `next/font` (or any font exposed as a CSS variable) and Tailwind, put the font's variable class on `<html>`, where the theme's `font-family` reads it. On `<body>` it often isn't picked up and the page silently falls back to the system font, so a whole review is done against the wrong face. Confirm with the computed `font-family` in the browser before judging type.
+
 The finer details (reserved bold width, text-box trim, underline offset, superscripts, small caps, punctuation, truncation, hyphenation, line clamping) are in `references/typography.md`.
 
 ## Mobile headings
@@ -40,7 +42,16 @@ On phone layouts (< 768px), headings go up one step so they read at arm's length
 | Card heading (e.g. "Top issues", "Team members") | 14 / 20, 600 | **16 / 22, 600** |
 | Page title | 28 / 32 | 22 / 28 (when shown in the body; a header title stays 16) |
 
-Body and meta sizes do not change. A mobile screen then uses 18 / 16 / 14 / 12, which is still four sizes.
+## Mobile text sizes (strict)
+On a phone, 12px is too small for anything people need to read. Body stays 14, and:
+
+| Text | Desktop | Mobile |
+|---|---|---|
+| Meta and secondary lines (instructor · room, "60 min · Done", a payment date, a delta line, the caption under a stat) | 12 | **14** |
+| Card and list-item titles, month headers, post titles | 14 | **16** |
+| Buttons | 14 | **16** (40px tall) |
+
+12px stays only for small labels that are glanced at, not read: tags, nav group labels, axis ticks, tab-bar labels, day names in a date strip. A mobile screen then uses 18 / 16 / 14 / 12, which is still four sizes. The usual audit finding on a phone is a row of 12px secondary lines; move them all to 14 at once rather than one at a time.
 
 ## Secondary text
 - Secondary: ink at about 70% (`--ink-2`). Tertiary and meta: about 50% (`--ink-3`). Both are mixed from the ink colour, never Tailwind `gray-500`.

@@ -35,7 +35,7 @@ An action that stands alone in a card or header ("Export CSV", "View more", "Add
 
 ## Variants
 - **Primary:** ink fill (`--ink`), page-colour text. **One per view** (principle #3).
-- **Secondary:** 7% ink fill, ink text. No border.
+- **Secondary:** 7% ink fill, ink text. No border. **In dark mode, check it on a card, not just on the page:** its fill must be visibly lighter than the card it sits on (about 10–12% ink, or the next surface step). A secondary button the same colour as its card disappears, and this is the most common dark-mode miss.
 - **Ghost:** transparent, `--ink-2` text, 6% ink fill on hover.
 - **Destructive:** ghost or secondary with `--err` text. It becomes a solid red fill only in the final confirm step.
 - **Accent primary:** allowed only where the brand needs the main CTA in colour. The text must pass AA (see colour.md).

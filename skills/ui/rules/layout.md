@@ -77,6 +77,20 @@ Actions that act on the whole screen or window (Copy, Export, Share, Open PDF, N
 - **Remove duplicates** further down the screen (a card's own "Copy" that does the same as the header's).
 - Actions that belong to one card (a chart's view toggle, a row's menu) stay in that card.
 - Mobile: the group wraps to a full-width row under the title, buttons 40px tall, primary on the right.
+- **Creating is a button, never a resident form.** "New post" or "Add member" is the primary in this group and opens a dialog or side panel; the page below is the list (UX F58). A creation form sitting permanently at the top of a list page is a finding.
+
+## Actions sit on what they change
+Behaviour: UX F57.
+
+- **On a detail page the record comes first and largest**, with Edit and Delete on its card. History and stats follow.
+- **Actions live on the row or section they change:** Renew and Pause sit in the membership row (a trailing link or row menu) and open their own flow. They are not separate sections further down, and their options appear only after the action is tapped.
+- An action that needs someone's approval reads as a request ("Request a pause") and shows its Pending state on that same row (UX F55).
+- Profile ends with links to Settings and Sign out; account settings (name, email, password, notification switches, delete account) live on the Settings page, not on the profile.
+
+## Feeds get their own page
+- **On a phone, the bell opens a notifications page**, not a dropdown or a home-screen section (UX F58). Back returns to where the person was.
+- Group it: **items that need action first** ("For you": a class soon, a membership about to expire), then news from the organisation, newest first, each with its date. Unread items get a small dot; the full message shows on the page rather than linking elsewhere.
+- The bell's dot lights only for items that need action or arrived recently, not for everything unread forever.
 
 ## The logo
 - **If the product has no real logo** (an initials tile, a letter in a gradient square, a generic icon standing in for the brand), **ask the user for theirs during the audit** (SVG preferred) instead of polishing the placeholder. Initials in a user's avatar aren't a logo; leave those alone.

@@ -13,9 +13,11 @@ House default. When the project has its own system, express this through its com
 | Input → its helper or error text | 6 |
 | Field → field | 16 |
 | Group → group (fieldsets, card sections) | 24–32 |
-| Section → section on a page | 48 |
+| Section → section on a page | 48 (**32 on a phone**) |
 | Panel padding | 20 (16 on mobile) |
 
+- **A big number and its caption: 8.** "€12,480" over "83 members" is a title and its description, but the large figure needs a little more air than the 4 used for text.
+- **A list's heading sits 24 above the list** when the list is the page's main content ("Published · 3" above the posts), so the heading reads as the header of the whole list rather than of the first item.
 - Things inside a group are always closer than the gap between groups. If two gaps are equal, the grouping is lost (the AI tell).
 - Footers and action bars are separated by a hairline or a fill step (see elevation.md), padding 12×20, actions right-aligned with the primary last.
 - Use `gap` on flex and grid parents, not margins on children.

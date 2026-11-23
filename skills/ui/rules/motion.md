@@ -30,6 +30,17 @@ Everyday UI enters from its trigger with a slight scale and a soft landing, leav
 - **Error:** each invalid field shakes once on submit (±6px settling, ~320ms), never the whole form, always with the inline message, outline and icon. Full spec in `forms.md`.
 - **AI content (summaries, suggestions):** marked by an **edge light, not a dark or gradient block.** The card is a light accent tint with a thin accent outline and the product's sparkle icon by the title. When it first appears, light runs **once** along the border: it starts as a 0.5px line from the middle of the top and bottom edges, travels around the rounded corners, grows to ~2px with a widening soft blur in a blue–cyan–violet hue, and settles at the top-right and bottom-left corners, then fades back to the plain outline (~2.5–3s in all). Never loops, never on every render, none with reduced motion. Draw it with a masked `conic-gradient` border (`@property` angle) so it follows the radius.
 - **Accordion:** height opens over `--dur-panel` ease-out and closes over `--dur-panel-exit`; the content fades in with a 4px drop; the +/− or chevron swaps with the blur crossfade. Reduced motion: fade only.
+- **Full-screen verdict (check-in, scan, payment result):** behaviour in UX F52.
+  - **On the person's own phone:** the whole screen, status bar included, fills with a success green dark enough for white text (≥ 4.5:1), with a large white tick and one line of result ("Checked in · 18:04 · 8/12 sessions") at 22–28px. It closes by itself after 5s. Its button ("Done") shows the countdown as its fill draining left to right; this is a timer, so it runs linear. Tapping anywhere closes it sooner. Failure is the same in the error red, with the reason and the fix.
+  - **On a staff screen that must stay usable:** the verdict is a glow, not a cover. A gradient rises from the bottom edge across the whole viewport (sidebar included), green for valid and red for refused. Over a soft gradient sits a fine grain layer in the same hue, slightly lighter, densest at the bottom and thinning to nothing towards the top, like sand. About 3s in all (300ms in, hold, slow fade out), `pointer-events: none` so work carries on. No glow when nothing was decided (the person is already inside).
+  - Prototypes give each outcome a **Simulate** control (valid, expired, unknown) that runs through the real flow (UX F64).
+  - Reduced motion: opacity only, no rise.
+- **Pass card (a card people show to be scanned):**
+  - Press and hold tilts it towards the finger, up to about 8°, with `perspective: 800px`, tracking the pointer 1:1 while held and settling back with `--ease-out` on release.
+  - A tap flips it 180° around the Y axis (~450ms, `--ease-move`, `backface-visibility: hidden`) to its back: the brand's logo.
+  - The sheet that shows it for scanning is tall enough to put the card in the middle of the screen, and asks for full screen brightness while open where the platform allows, restoring it on close.
+  - Reduced motion: no tilt, and the flip becomes a crossfade.
+- **Rolling digits:** when a number changes in place (a hero number following the hover, a live count), only the digits that change animate. The old digit blurs and leaves upward while the new one enters from below, ~200ms `--ease-out`, each changed digit ~30ms after the one to its left. Digits that stay the same don't move. Always `tabular-nums`. Reduced motion: a crossfade.
 - **Travel (add to cart, move file):** an arc (~32px lift), `--ease-move`.
 - **Card → detail:** the same element expands (shared `layoutId` / view transition). Never a disconnected replacement.
 - **Drag:** 1:1 with the pointer, no transition while held. Rubber band past bounds, then settle with `--ease-out` on release.
@@ -41,7 +52,7 @@ Everyday UI enters from its trigger with a slight scale and a soft landing, leav
 - No hover scale on cards or buttons.
 - Never `scale(0)` entrances. Never centre-origin popovers.
 - Animate only `transform`, `opacity`, `filter` and `clip-path`.
-- Nothing user-triggered takes longer than 300ms to settle.
+- Nothing user-triggered takes longer than 300ms to settle. The exceptions are the pass-card flip and a verdict's hold, which are moments to look at rather than transitions to wait for.
 - `prefers-reduced-motion: reduce`: remove translate, scale, stretch and stagger. Keep opacity at `--dur-fast`.
 
 ```css
