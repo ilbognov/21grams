@@ -15,6 +15,8 @@ Learned from real passes and research: `references/field-rules.md`.
 - **F43** Missing data says N/A, never blank or zero.
 - **F44** Line limits with an ellipsis; repeated slots aligned across siblings.
 - **F45** Check none, one, typical, many and the longest values.
+- **F51** Limits show used of total ("8/12"), countable and coloured by what is left.
+- **F53** Every blocked state offers its fix on the same screen.
 
 ## Audit checklist
 - [ ] #7
@@ -23,3 +25,5 @@ Learned from real passes and research: `references/field-rules.md`.
 - [ ] F43
 - [ ] F44
 - [ ] F45
+- [ ] F51
+- [ ] F53

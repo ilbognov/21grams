@@ -7,7 +7,7 @@
     {
       "name": "21grams",
       "source": "./",
-      "version": "4.9.0",
+      "version": "4.10.0",
       "description": "The 21 Grams scales as skills: ui (available), ux (available). Each works through your project's own components."
     }
   ],

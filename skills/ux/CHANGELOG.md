@@ -1,5 +1,9 @@
 # 21 Grams UX changelog
 
+## 1.3.0 — 2026-11-23
+
+- Field rules F51–F64 from the fourth review session (a membership and check-in app with a member app, front desk and back office): usage as used of total, full-screen outcomes that close themselves, every blocked state offers its fix, grace periods that leave a note for the next person, approvals as requests, date ranges for time-bound actions, the record leads its page, feeds as pages with creation as a button, only the states the business has, horizontal scrollers that show more, calendars for time and compact summaries, grouped navigation, no input lag from background updates, the device side of hardware flows.
+
 ## 1.2.0 — 2026-11-18
 
 - Field rules F37–F50 from the third review session (a mobile-first analytics app with portfolio, product and role views): reading width for reading and choosing, pin only what's needed, filters beside the list in a sheet, overview first, clickable at the level you click, short labels with definitions on request, N/A for missing data, clamped and aligned text, real volumes, one kind of thing per container, roles change the starting point, one picker for add and edit, toggles for on/off, same patterns on every platform.

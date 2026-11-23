@@ -16,6 +16,11 @@ Learned from real passes: `references/field-rules.md`.
 - **F35** Honest money: free path, dated trials, upgrades at the limit.
 - **F47** Roles change the starting point, not the app.
 - **F48** One picker for add and edit; an empty selection opens it.
+- **F53** Every blocked state offers its fix on the same screen.
+- **F54** Grace exceptions are a recorded choice the next person on shift sees.
+- **F55** Actions that need approval are requests with a visible status.
+- **F59** Only the states and concepts the business really has.
+- **F64** Hardware steps are shown on screen and simulated in demos.
 
 ## Audit checklist
 - [ ] A6
@@ -25,3 +30,8 @@ Learned from real passes: `references/field-rules.md`.
 - [ ] F35
 - [ ] F47
 - [ ] F48
+- [ ] F53
+- [ ] F54
+- [ ] F55
+- [ ] F59
+- [ ] F64

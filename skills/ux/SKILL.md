@@ -1,6 +1,6 @@
 ---
 name: ux
-description: Audit and fix the flows and usability of a product built by AI, so it works the way people expect and not just looks finished, using the project's own components and patterns. Use when the user asks for "21 grams UX" (or "twenty-one grams UX"), wants a flow, journey or screen audited for usability, or asks to fix back and close behaviour, scroll restoration, infinite feeds, optimistic likes and saves, draft saving, permission prompts, bottom sheets, deep links, navigation, forms, empty, loading and error states, feedback, onboarding (questionnaires, sign-up, trials, paywalls, permission asks, tours), destructive actions, accessibility and keyboard use, task length or choice overload in an existing frontend, AI proposals and accept/reject flows, contextual toolbars, delete scopes, keyboard shortcuts, collaboration presence, filters and bottom sheets, missing data and N/A, text truncation, role-based views, mobile and desktop parity, reading width, asks how leading products handle a flow or wants UX research with examples (e.g. from Mobbin), or wants a flow checked against UX laws (Hick's, Fitts's, Jakob's, Miller's, Doherty Threshold, Tesler's, Postel's).
+description: Audit and fix the flows and usability of a product built by AI, so it works the way people expect and not just looks finished, using the project's own components and patterns. Use when the user asks for "21 grams UX" (or "twenty-one grams UX"), wants a flow, journey or screen audited for usability, or asks to fix back and close behaviour, scroll restoration, infinite feeds, optimistic likes and saves, draft saving, permission prompts, bottom sheets, deep links, navigation, forms, empty, loading and error states, feedback, onboarding (questionnaires, sign-up, trials, paywalls, permission asks, tours), destructive actions, accessibility and keyboard use, task length or choice overload in an existing frontend, AI proposals and accept/reject flows, contextual toolbars, delete scopes, keyboard shortcuts, collaboration presence, filters and bottom sheets, missing data and N/A, text truncation, role-based views, mobile and desktop parity, reading width, usage limits and progress, check-in and scan results, expired and blocked states, grace periods, approval requests, date ranges, notification pages, calendars and schedules, grouped navigation, input lag, hardware and kiosk flows, asks how leading products handle a flow or wants UX research with examples (e.g. from Mobbin), or wants a flow checked against UX laws (Hick's, Fitts's, Jakob's, Miller's, Doherty Threshold, Tesler's, Postel's).
 ---
 
 # 21 Grams UX
@@ -78,6 +78,9 @@ Every change goes through what the project already uses. 21 Grams UX never build
 - Reading and picking happen in a narrow centred column; only the step's context and action stay pinned. (F37, F38)
 - Missing data says N/A, text is clamped and aligned, and every list is checked with real volumes. (F43, F44, F45)
 - Roles change the starting point, not the app; mobile and desktop share the same patterns. (F47, F50)
+- Limits show used of total, and the moments people wait for fill the screen, then close themselves. (F51, F52)
+- Every blocked state offers its fix; approvals are requests and exceptions leave a note for the next person. (F53, F54, F55)
+- Only the states the business really has, and typing never waits on background work. (F59, F63)
 
 ## Workflow
 

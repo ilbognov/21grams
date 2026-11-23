@@ -22,6 +22,8 @@ Learned from real passes: `references/field-rules.md`.
 - **F24** Show what the AI is doing, on request.
 - **F25** Show who else is here.
 - **F41** The affordance sits on the cell or button that acts; nothing useful only on hover.
+- **F52** Key outcomes fill the screen in the result colour and close themselves after about 5 s.
+- **F64** Hardware steps are shown on screen and simulated in demos.
 
 ## Audit checklist
 - [ ] A5
@@ -33,3 +35,5 @@ Learned from real passes: `references/field-rules.md`.
 - [ ] F24
 - [ ] F25
 - [ ] F41
+- [ ] F52
+- [ ] F64

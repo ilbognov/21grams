@@ -326,6 +326,78 @@ From a UX research pass over three leading iOS onboarding flows on Mobbin: [Bril
 **Apply:** Design mobile first, then carry each pattern to desktop in the desktop layout (bottom sheets become side panels or popovers, stacked cards become a grid). Use the same labels, icons and flow order on both.
 **Flag:** A feature named differently on desktop, flows with different steps per platform, icons or components that only one platform uses.
 
+## Session 4: membership and check-in app (member app, front desk and back office)
+
+### F51. Show usage as used of total
+**Rule:** Anything with a limit shows how much is used out of the total, not only what's left or what was bought.
+**Apply:** Write "8/12 sessions", not "12 sessions". For small totals, draw one segment per unit so people can count at a glance, and colour the bar by what's left (plenty, getting low, used up). Keep the same count and colours everywhere the limit appears.
+**Flag:** A bare total with no usage, a remaining count with no total, progress bars that can't be counted, a limit that is shown differently on different screens.
+
+### F52. Big outcomes fill the screen, then step aside
+**Rule:** The result of a moment people wait for (a check-in, a scan, a payment) is unmistakable from across the room and leaves on its own.
+**Apply:** On success, wash the whole screen in the success colour (for example, a green glow rising from the bottom), with the name and the reason in large type, and failures in the error colour with the reason. Close the confirmation by itself after about five seconds, with a button to close it sooner.
+**Flag:** A small toast for the moment the whole flow is for, a result someone has to read up close, a confirmation that waits for a tap before the next person can go.
+
+### F53. Every blocked state offers the way forward
+**Rule:** When something stops people (expired, locked, over the limit), the same screen offers the fix.
+**Apply:** An expired membership shows "Renew" right there, prefilled with the last plan. A full class offers the waiting list. Name the fix with a verb, and keep people where they are when it's done.
+**Flag:** "Expired" or "Not allowed" with no action, a fix that lives in another part of the app, staff who have to leave the current screen to unblock someone.
+
+### F54. Grace periods leave a note for the next person
+**Rule:** When the rules allow an exception, it is a choice with a record, and the next person who meets the same case sees it.
+**Apply:** For a short grace window (expired a day or two ago), offer two options: fix it now, or let it through once with a reminder. The reminder appears as a warning the next time that person is seen, for whoever is on shift, and the exception can't be used twice in a row.
+**Flag:** Exceptions that leave no trace, warnings that only the person who made them can see, grace that can repeat forever, a hard stop where the business allows judgement.
+
+### F55. If someone has to approve it, it's a request
+**Rule:** Actions that need another party's approval are sent as requests with a visible status, not switched on directly.
+**Apply:** "Request a pause" sends the request, shows it as Pending on the item, and tells the person when it is approved or declined. The other side gets an approve and decline queue. Never show an action as done before it is approved.
+**Flag:** Buttons that look instant for things that need approval, requests with no status, approvals that happen without the requester hearing back.
+
+### F56. Time-bound actions ask for the range
+**Rule:** An action that lasts for a period asks for its start and end, not a single tap.
+**Apply:** Pausing, holidays, bookings and suspensions open a from–to date picker with sensible limits and the length shown ("14 days"). Prefill the start with today.
+**Flag:** A single "Pause" button with no dates, an end date that has to be set later somewhere else, ranges with no visible length.
+
+### F57. The record leads its own page, and its actions sit on it
+**Rule:** On a detail page the record itself is the main thing, and the actions for it (edit, delete, renew, pause) sit on the record.
+**Apply:** Put the record's card first and largest, with edit and delete on it. Offer actions in the section they change (renewal inside Membership, pause on the membership row), and show their options only after the action is tapped, not up front.
+**Flag:** A detail page where history or stats outrank the record, records that can't be edited or deleted, actions in a separate section away from what they change, option panels shown before anyone asks.
+
+### F58. Feeds are pages; creating is a button
+**Rule:** A stream people come back to (notifications, news, activity) is a page of its own, and making a new item is a button that opens a dialog.
+**Apply:** Notifications open their own page from the bell, with the count on the bell. On a list page, put "New post" or "Add member" as the primary action top right (F2), opening a dialog or panel, and let the list fill the page. Put the most common creation action on the screen staff start their day on.
+**Flag:** A notification stream squeezed into a home-screen section, a creation form permanently taking the top of a list, a common action buried in a sub-page.
+
+### F59. Model the states the business really has
+**Rule:** States, statuses and concepts on screen match how the business actually works. Don't invent ones it doesn't have.
+**Apply:** Before adding a status, check it with the domain: if a membership is either paid or not, there is no "debt" to show. Remove states nobody uses, and name the rest the way staff say them.
+**Flag:** Statuses that never apply, figures that are always zero because the concept doesn't exist, terms staff have to translate.
+
+### F60. Show there's more sideways
+**Rule:** A horizontal scroller shows that it scrolls.
+**Apply:** Fade the edges where more content continues, let the last item peek, and scroll the selected item (today, the active filter) into view on load.
+**Flag:** Horizontal rows that look complete, edges cut cleanly so nobody swipes, the selected item off screen.
+
+### F61. Time looks like a calendar; summaries stay small
+**Rule:** Things that happen at times (classes, bookings, shifts) are shown as a calendar, and history summaries take as little room as they can.
+**Apply:** Use a week strip or week view with days across and times down, today marked and selected by default. Show past activity as a compact summary (a count and a small strip or month grid) that opens the full view on tap (F40).
+**Flag:** Schedules as plain lists with dates repeated in each row, history grids that take over the screen, no sign of today.
+
+### F62. Group long navigation
+**Rule:** When a navigation has more than about seven items, it is grouped under short headings.
+**Apply:** Group by job (for example, Today, People, Business, Settings), with small all-caps group labels and the most-used group first. Keep the account and staff profile at the bottom (F11).
+**Flag:** Long flat sidebars, items grouped by how the code is built rather than by job, the same item in two groups.
+
+### F63. Typing never waits on background work
+**Rule:** Fields respond on the next frame, whatever the app is doing in the background.
+**Apply:** Background refreshes and live updates must not re-render the form people are typing in; skip updates when nothing changed and keep input state local. Check by typing fast while live data is on.
+**Flag:** Laggy or dropped keystrokes, cursors that jump, fields that reset when new data arrives.
+
+### F64. Show the device side of the flow
+**Rule:** When a flow depends on hardware (a card reader, a turnstile, a kiosk, a printer), the product shows what that device does, and a prototype simulates it.
+**Apply:** Show the device's state on screen (reader ready, card read, door open) and, in demos and reviews, give a simulator that plays each outcome: valid, expired, unknown card. Use those same outcomes for testing.
+**Flag:** Flows that assume the hardware just works, no way to demo or test a failed read, staff who can't tell whether the device is waiting or broken.
+
 ---
 
 ## Quick audit checklist
@@ -382,3 +454,17 @@ From a UX research pass over three leading iOS onboarding flows on Mobbin: [Bril
 | F48 | Flows | Same picker for add and edit; empty selection opens it |
 | F49 | Forms | Immediate on/off settings are toggles |
 | F50 | Navigation | Same patterns, names and order on mobile and desktop |
+| F51 | States | Limits shown as used of total, countable, coloured by what's left |
+| F52 | Feedback | Key outcomes fill the screen and close themselves after about 5 s |
+| F53 | Flows | Every blocked state offers its fix on the same screen |
+| F54 | Flows | Grace exceptions are recorded and shown to the next person on shift |
+| F55 | Flows | Approval-needing actions are requests with a status |
+| F56 | Forms | Time-bound actions ask for a from–to range with the length shown |
+| F57 | Choice | The record leads its page; actions sit on what they change |
+| F58 | Navigation | Feeds are their own page; creating is a top-right button opening a dialog |
+| F59 | Flows | Only the states the business really has |
+| F60 | Navigation | Horizontal scrollers fade at the edges and show the selected item |
+| F61 | Choice | Times as a calendar; history summaries compact, full view on tap |
+| F62 | Navigation | Navigation over ~7 items grouped by job |
+| F63 | Forms | Typing never lags or resets because of background updates |
+| F64 | Feedback | Hardware steps shown on screen and simulated in demos |

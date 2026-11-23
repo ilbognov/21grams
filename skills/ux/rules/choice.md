@@ -20,6 +20,8 @@ Learned from real passes: `references/field-rules.md`.
 - **F40** Compact overview first, the full view on tap; "See all" expands in place.
 - **F42** One- or two-word labels, the definition on request.
 - **F46** One kind of thing per container; objects people act on are cards.
+- **F57** The record leads its detail page; edit, delete and other actions sit on what they change.
+- **F61** Times shown as a calendar; history summaries stay compact and open on tap.
 
 ## Audit checklist
 - [ ] A1
@@ -33,3 +35,5 @@ Learned from real passes: `references/field-rules.md`.
 - [ ] F40
 - [ ] F42
 - [ ] F46
+- [ ] F57
+- [ ] F61

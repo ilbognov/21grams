@@ -19,6 +19,8 @@ Learned from real passes: `references/field-rules.md`.
 - **F26** Waits and cooldowns live on the control; confirmations echo the input.
 - **F48** One picker for add and edit.
 - **F49** Immediate on/off settings are toggles.
+- **F56** Time-bound actions ask for a from–to range and show its length.
+- **F63** Typing never lags or resets because of background updates.
 
 ## Audit checklist
 - [ ] A7
@@ -27,3 +29,5 @@ Learned from real passes: `references/field-rules.md`.
 - [ ] F26
 - [ ] F48
 - [ ] F49
+- [ ] F56
+- [ ] F63

@@ -14,6 +14,8 @@ Learned from real passes: `references/field-rules.md`.
 - **F20** Shortcuts are shown and don't fight the browser.
 - **F37** Narrow reading width for text and lists.
 - **F41** No information only on hover; touch has none.
+- **F60** Horizontal scrollers fade at the edges and scroll the selected item into view.
+- **F63** Typing never lags or resets because of background updates.
 
 ## Audit checklist
 - [ ] A2
@@ -21,3 +23,5 @@ Learned from real passes: `references/field-rules.md`.
 - [ ] F20
 - [ ] F37
 - [ ] F41
+- [ ] F60
+- [ ] F63

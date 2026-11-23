@@ -27,6 +27,9 @@ Learned from real passes: `references/field-rules.md`.
 - **F38** Pin the step's context and action while scrolling; nothing else is sticky.
 - **F39** Filters sit beside the list and open as a bottom sheet with Apply.
 - **F50** Same patterns, names and order on mobile and desktop.
+- **F58** Feeds are pages of their own; creating is a top-right button that opens a dialog.
+- **F60** Horizontal scrollers fade at the edges and scroll the selected item into view.
+- **F62** Navigation over about seven items is grouped by job.
 
 ## Audit checklist
 - [ ] A3
@@ -43,3 +46,6 @@ Learned from real passes: `references/field-rules.md`.
 - [ ] F38
 - [ ] F39
 - [ ] F50
+- [ ] F58
+- [ ] F60
+- [ ] F62
