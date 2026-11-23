@@ -526,6 +526,32 @@ ol.changes li .chip { font-size: 11px; padding: 3px 6px; white-space: nowrap; }
   .tg-ai.lit::before { animation: none; --edge-a: var(--edge-end, 65deg); --edge-w: 2px; opacity: .7; }
 }
 
+/* usage meter example */
+.ai-use { margin: 0; text-align: center; font-size: 14px; color: #6b7280; }
+.ai-use b { display: block; font-size: 34px; line-height: 1.1; font-weight: 700; color: #4f46e5; }
+.tg-use .use-num { margin: 8px 0 10px; font-size: 13px; color: var(--demo-sub); font-variant-numeric: tabular-nums; }
+.tg-use .use-roll { display: inline-flex; font-size: 22px; font-weight: 600; letter-spacing: -.02em; color: var(--demo-ink); }
+.use-seg { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; margin-bottom: 16px; }
+.use-seg i { height: 4px; border-radius: 2px; background: #e6e6e9; transition: background-color .2s; }
+.use-seg[data-level="ok"] i.on { background: #16794a; }
+.use-seg[data-level="low"] i.on { background: #c27803; }
+.use-seg[data-level="out"] i.on { background: #b42318; }
+.use-btn { width: 100%; height: 36px; gap: 6px; }
+.use-btn svg { width: 14px; height: 14px; }
+.ux-btn.use-btn:disabled { background: #ececea; color: var(--demo-sub); cursor: not-allowed; transform: none; }
+.use-btn:disabled svg { display: none; }
+.dg { position: relative; display: inline-block; }
+.dg b { font-weight: inherit; display: inline-block; }
+.dg.roll b:last-child { animation: dg-in .2s cubic-bezier(.2,.7,.2,1) var(--d, 0ms) backwards; }
+.dg.roll b:first-child { position: absolute; left: 0; top: 0; animation: dg-out .2s cubic-bezier(.2,.7,.2,1) var(--d, 0ms) forwards; }
+@keyframes dg-in { from { transform: translateY(.6em); opacity: 0; filter: blur(3px); } }
+@keyframes dg-out { to { transform: translateY(-.6em); opacity: 0; filter: blur(3px); } }
+@media (prefers-reduced-motion: reduce) {
+  .dg.roll b:last-child { animation-name: uxfade; }
+  .dg.roll b:first-child { animation: dg-fade .15s forwards; }
+}
+@keyframes dg-fade { to { opacity: 0; } }
+
 /* chart interaction */
 .tgc .col { cursor: pointer; outline: 0; }
 .tgc .hit { fill: transparent; }
@@ -842,7 +868,7 @@ footer { font: 12px/1.6 var(--f-text); color: var(--faint-text); }
       <div class="head">
         <span class="eyebrow">Design family</span>
         <h1><svg class="px" data-icon="window" aria-hidden="true"></svg>21 Grams UI</h1>
-        <span class="tag live">v4.6 · available</span>
+        <span class="tag live">v4.7 · available</span>
         <p class="lede">Uplifts UI that was built by AI so it stops looking AI-generated. It audits a screen against a house style and proven UX and motion principles, then fixes what it finds using what your project already has.</p>
       </div>
 
@@ -867,6 +893,7 @@ footer { font: 12px/1.6 var(--f-text); color: var(--faint-text); }
           <button type="button" role="tab" id="tab-chart" aria-controls="ex-chart" aria-selected="false" tabindex="-1">Chart</button>
           <button type="button" role="tab" id="tab-table" aria-controls="ex-table" aria-selected="false" tabindex="-1">Table</button>
           <button type="button" role="tab" id="tab-ai" aria-controls="ex-ai" aria-selected="false" tabindex="-1">AI summary</button>
+          <button type="button" role="tab" id="tab-use" aria-controls="ex-use" aria-selected="false" tabindex="-1">Usage</button>
         </div>
 
         <div class="ex" id="ex-card" role="tabpanel" aria-labelledby="tab-card">
@@ -1035,6 +1062,24 @@ footer { font: 12px/1.6 var(--f-text); color: var(--faint-text); }
             <li><span>The text is body colour on a light surface instead of white on navy, and the footnote is quiet.</span><span class="chip">type</span></li>
           </ol>
         </div>
+        <div class="ex" id="ex-use" role="tabpanel" aria-labelledby="tab-use" hidden>
+          <div class="compare">
+            <div class="compare-bar"><span>AI default</span><span class="hint">Check in on both sides to use a session. <button type="button" class="ux-link" id="use-reset">Reset</button></span><b>21 Grams</b></div>
+            <div class="stage" style="--pos: 50%; height: 300px">
+              <div class="layer before"><div class="ai"><h4>Premium Membership</h4><p class="ai-use"><b id="ai-use-n">6</b> sessions left</p><button type="button" class="ai-primary" id="ai-use-btn">Check In Now</button><p class="ai-meta">Renews on 1 December</p></div></div>
+              <div class="layer after"><div class="tg-panel tg-use"><div class="tg-ch"><h5>Monthly pass</h5><span>Renews 1 Dec</span></div><div class="use-num" id="tg-use-num" aria-live="polite"><span class="use-roll" id="tg-use-n">6</span><span>/12 sessions</span></div><div class="use-seg" id="tg-use-seg" aria-hidden="true"></div><button type="button" class="ux-btn solid use-btn" id="tg-use-btn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5 6.5 11.5 12.5 4.5"/></svg><span>Check in</span></button></div></div>
+              <div class="handle"></div>
+              <input type="range" id="cmp-use" min="0" max="100" value="50" aria-label="Compare AI default and 21 Grams usage meter">
+            </div>
+          </div>
+          <ol class="changes">
+            <li><span>“6 sessions left” became “6/12 sessions”: used of total, in tabular figures, so the limit is always in view.</span><span class="chip">copy</span></li>
+            <li><span>Twelve segments, one per session, so you can count what's used instead of guessing from a bar.</span><span class="chip">charts</span></li>
+            <li><span>The filled segments are green while there's plenty, amber when it's getting low and red when it's used up, always together with the text.</span><span class="chip">colour</span></li>
+            <li><span>Only the digit that changes rolls: the old one blurs up and out, the new one comes in from below.</span><span class="chip">motion</span></li>
+            <li><span>When the pass is used up, the button says so instead of staying live with no effect.</span><span class="chip">buttons</span></li>
+          </ol>
+        </div>
       </div>
 
       <div class="block">
@@ -1049,6 +1094,14 @@ footer { font: 12px/1.6 var(--f-text); color: var(--faint-text); }
           <li><span>Cards</span><span>Entities are cards, peer sections get their own containers, sibling cards align with text clamped to 2 lines, and no tag repeats what the card says.</span></li>
           <li><span>Details</span><span>Icon rows with equal insets, pinned picker headers, signed deltas, switches for binary settings, actions that look clickable, accordion motion and quiet field details.</span></li>
           <li><span>AI content</span><span>A light card with a thin outline, where a light runs once around the edge and then rests.</span></li>
+          <li><span>Mobile</span><span>On a phone, meta lines are 14px and titles and buttons 16px. 12px is only for tags, nav group labels and axis ticks.</span></li>
+          <li><span>Stats</span><span>Stat cards with a quiet title and the number loudest. Usage meters read “8/12 sessions” in countable segments that go green, amber, then red. Digits roll on hover, only the ones that change.</span></li>
+          <li><span>Schedules</span><span>A week calendar: times down, days across, block height for duration, a now-line and a faded past. A date strip on phones.</span></li>
+          <li><span>Verdicts</span><span>Full-screen results: a green phone screen that closes itself after 5 seconds, and a grainy glow rising from the bottom on staff screens.</span></li>
+          <li><span>Pass card</span><span>Tilts while held, flips in 3D on tap, and sits in a bright sheet for scanning.</span></li>
+          <li><span>Placement</span><span>Create is a top-right button, actions sit on the row they change, and notifications get their own page.</span></li>
+          <li><span>Dark mode</span><span>Secondary buttons are visibly lighter than their card, and cards sit a small step above the page.</span></li>
+          <li><span>Fields</span><span>Inputs respond on the next frame, even when live data updates around them.</span></li>
         </ul>
         <div class="chips" aria-label="House style rule sets">
           <span class="chip">radius</span><span class="chip">buttons</span><span class="chip">motion</span><span class="chip">type</span><span class="chip">spacing</span><span class="chip">colour</span><span class="chip">elevation</span><span class="chip">copy</span><span class="chip">icons</span><span class="chip">charts</span><span class="chip">toggles</span><span class="chip">layout</span><span class="chip">forms</span><span class="chip">tables</span>
@@ -1256,6 +1309,7 @@ footer { font: 12px/1.6 var(--f-text); color: var(--faint-text); }
         <h1><svg class="px" data-icon="clock" aria-hidden="true"></svg>Changelog</h1>
       </div>
       <ul class="log">
+        <li><span class="v">UI 4.7.0</span><span>Mobile text sizes, stat cards and usage meters you can count, week-calendar schedules, full-screen verdicts and a pass card that tilts and flips. Rolling digits, actions on the row they change, a notifications page, dark-mode secondary buttons that stand off their card, and fields that respond within a frame.</span></li>
         <li><span class="v">UX 1.2.0</span><span>14 field rules from a mobile-first analytics review: reading width, filters in a sheet beside the list, overview first, short labels with definitions on request, N/A for missing data, roles that change the starting point, toggles for on and off, and the same patterns on every platform.</span></li>
         <li><span class="v">UX 1.1.0</span><span>A research step: before designing a flow, compare three to five leading products, one at a time, then recommend. Plus 10 onboarding field rules, from one question per screen to value before the account and skippable tours.</span></li>
         <li><span class="v">UI 4.6.0</span><span>Reading width, even page padding and one page header pattern. Cards for entities, aligned sibling cards, icon rows with even insets. Tables with headers the size of their cells, “N/A” in empty cells and line-caret sorting. Signed deltas, switches for binary settings, actions that look clickable, and a light that runs once around AI content.</span></li>
@@ -1512,6 +1566,37 @@ document.querySelectorAll(".stage").forEach(st => {
   };
   new MutationObserver(() => { if (!panel.hidden) requestAnimationFrame(light); }).observe(panel, { attributes: true, attributeFilter: ["hidden"] });
   document.getElementById("ai-edge-replay").addEventListener("click", light);
+}
+
+// Usage meter: used of total, one segment per session, coloured by what's left; only changed digits roll.
+{
+  const TOTAL = 12, START = 6;
+  const aiN = document.getElementById("ai-use-n"), aiB = document.getElementById("ai-use-btn");
+  const n = document.getElementById("tg-use-n"), seg = document.getElementById("tg-use-seg"), b = document.getElementById("tg-use-btn");
+  const label = b.querySelector("span");
+  seg.innerHTML = "<i></i>".repeat(TOTAL);
+  let used, aiUsed;
+  const roll = (el, v) => {
+    const s = String(v), old = el.dataset.v || s; el.dataset.v = s; let k = 0;
+    el.innerHTML = [...s].map((d, i) => {
+      const same = old.length === s.length && old[i] === d;
+      if (same) return `<span class="dg"><b>${d}</b></span>`;
+      const prev = old.length === s.length ? old[i] : "";
+      return `<span class="dg roll" style="--d:${30 * k++}ms"><b aria-hidden="true">${prev}</b><b>${d}</b></span>`;
+    }).join("");
+  };
+  const paint = first => {
+    if (first) { n.dataset.v = String(used); n.textContent = used; } else roll(n, used);
+    [...seg.children].forEach((s, i) => s.classList.toggle("on", i < used));
+    seg.dataset.level = used >= TOTAL ? "out" : used / TOTAL > .6 ? "low" : "ok";
+    b.disabled = used >= TOTAL; label.textContent = used >= TOTAL ? "No sessions left" : "Check in";
+    aiN.textContent = TOTAL - aiUsed; aiB.disabled = aiUsed >= TOTAL;
+  };
+  const reset = () => { used = START; aiUsed = START; paint(true); };
+  b.addEventListener("click", () => { if (used < TOTAL) { used++; paint(); } });
+  aiB.addEventListener("click", () => { if (aiUsed < TOTAL) { aiUsed++; aiN.textContent = TOTAL - aiUsed; aiB.disabled = aiUsed >= TOTAL; } });
+  document.getElementById("use-reset").addEventListener("click", reset);
+  reset();
 }
 
 // Example tabs
